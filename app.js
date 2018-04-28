@@ -5,10 +5,10 @@ const pug = require('pug');
 const jsonParser = bodyParser.json();
 const mysql = require("mysql");
 const connection = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "",
-		database: "cardfile"
+	host: "localhost",
+	user: "root",
+	password: "",
+	database: "cardfile"
 });
 
 app.use(express.static(__dirname + "/public"));
@@ -16,18 +16,13 @@ app.use(express.static(__dirname + "/public"));
 connection.connect();
 
 app.get("/", function(request, response){
-		connection.query('SELECT * FROM listeners', function(error, row, fields){
-		        if (error){
-		            throw error;
-		        }
-		        console.log(row);
-						response.render("index.pug", {
-
-						});
-						//connection.end();
-		});
+	connection.query('SELECT * FROM listeners', (err, row, fields)=>{
+		if (err) throw err;
+		console.log(row);
+		response.render("index.pug", {});
+	});
 });
 
 app.listen(3000, function(){
-		console.log("Сервер запущен...");
+	console.log("Сервер запущен...");
 });
