@@ -5,12 +5,11 @@ block main
 	br
 	.container
 		.row
-			.col-4
-				.form
-					.form-group
-						label(for="example1") Данные 1
-						input(type="text").form-control#example1
-					.form-group
-						label(for="example2") Данные 2
-						input(type="text").form-control#example2
-					button(type="submit").btn.btn-primary Отправить
+			.col-3
+					.form
+						.form-group
+							label(for="example") Программа
+							input(type="text").form-control#example
+						button(type="submit").btn.btn-primary Отправить
+			.col-6.offset-3
+				.alert.alert-primary #{listener.program}
