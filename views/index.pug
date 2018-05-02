@@ -12,4 +12,5 @@ block main
 							input(type="text").form-control#example
 						button(type="submit").btn.btn-primary Отправить
 			.col-6.offset-3
-				.alert.alert-primary #{listener.program}
+				for row in listener
+					+card(row)

@@ -18,13 +18,25 @@ connection.connect();
 app.get("/", function(request, response){
 	connection.query('SELECT * FROM programs', (err, row, fields)=>{
 		if (err) throw err;
-		console.log(row);
 		const RP = {
-			listener: row[0]
+			listener: row
 		}
+		console.log(RP);
 		response.render("index.pug", RP);
 	});
 });
+
+// app.post("/user", jsonParser, function (request, response) {
+// 	if(!request.body) return response.sendStatus(400);
+// 	console.log(request.body);
+// 	response.json(`${request.body.userName} - ${request.body.userAge}`);
+// });
+//
+// app.get("/", function(request, response){
+//
+// 	response.send("<h1>Главная страница</h1>");
+// });
+
 
 app.listen(3000, function(){
 	console.log("Сервер запущен...");
