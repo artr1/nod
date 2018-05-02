@@ -12,5 +12,12 @@ block main
 							input(type="text").form-control#example
 						button(type="submit").btn.btn-primary Отправить
 			.col-6.offset-3
-				for row in listener
-					+card(row)
+				table(border="1" width="100%" cellpadding="5")
+					for row in listener
+						tr
+							td
+								+card(row)
+							td(width="16px")
+								input(type="image" src="img/delete.png")
+							td(width="16px")
+								input(type="image" src="img/ed.png")
