@@ -6,13 +6,13 @@ block main
 	.container
 		.row
 			.col-3
-					.form
-						.form-group
-							label(for="example") Программа
-							input(type="text").form-control#example
-						button(type="submit").btn.btn-primary Отправить
+				form(action="/user" method="post" name="dataForm").form
+					.form-group
+						label(for="example") Данные
+						input(type="text" name="programName").form-control#example
+					button(type="submit").btn.btn-primary Отправить
 			.col-6.offset-3
-				table(border="1" width="100%" cellpadding="5")
+				table(width="100%" cellpadding="5")
 					for row in listener
 						tr
 							td

@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1>Введите данные</h1>
-	<form action="/register" method="post" name="registerForm">
+	<form action="/user" method="post" name="registerForm">
 		<label>Имя</label></br>
 		<input type="text" name="userName" /></br></br>
 		<label>Возраст</label></br>
@@ -16,8 +16,22 @@
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script>
 		$("form").submit(function(e) {
+			e.preventDefault();//перехват события
+			var form = $(this);//текущая форма
+			console.log(form.serialize())
+			$.ajax({
+				type: "POST",
+				url: form.attr("action"),//подставляется атрибут action
+				data: form.serialize(),//передаем все данные формы
+				dataType: "json",
+				contentType: "application/json",
+				success: function(data){
+					console.log(data);
+					},
+				});
 
-			e.preventDefault();
+
+			/*
 			var registerForm = document.forms["registerForm"];
 			var userName = registerForm.elements["userName"].value;
 			var userAge = registerForm.elements["userAge"].value;
@@ -32,6 +46,7 @@
 					console.log(data);
 					},
 				});
+				*/
 		});
 	</script>
 </body>

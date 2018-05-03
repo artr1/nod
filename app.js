@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const pug = require('pug');
-const jsonParser = bodyParser.json();
+//const jsonParser = bodyParser.json();
 const mysql = require("mysql");
 const connection = mysql.createConnection({
 	host: "localhost",
@@ -12,25 +12,29 @@ const connection = mysql.createConnection({
 });
 
 app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.json());//если данные пришли в json
+app.use(bodyParser.urlencoded({ extended:true }));//если данные пришли строкой
 
 connection.connect();
 
-app.get("/", function(request, response){
+app.get("/", function(req, res){
 	connection.query('SELECT * FROM programs', (err, row, fields)=>{
 		if (err) throw err;
 		const RP = {
 			listener: row
 		}
-		console.log(RP);
-		response.render("index.pug", RP);
+		//console.log(RP);
+		res.render("index.pug", RP);
 	});
 });
 
-// app.post("/user", jsonParser, function (request, response) {
-// 	if(!request.body) return response.sendStatus(400);
-// 	console.log(request.body);
-// 	response.json(`${request.body.userName} - ${request.body.userAge}`);
-// });
+app.post("/user", function (req, res) {
+	connection.query('INSERT INTO programs (program) VALUES ("'+req.body.programName+'")', (err, result)=>{
+		if (err) throw err;
+		res.json({id: result.insertId, name: req.body.programName});
+		//console.log(result);
+	});
+});
 //
 // app.get("/", function(request, response){
 //
