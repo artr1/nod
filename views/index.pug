@@ -14,10 +14,10 @@ block main
 			.col-6.offset-3
 				table(width="100%" cellpadding="5")
 					for row in listener
-						tr
+						tr(id="row-"+row.id)
 							td
 								+card(row)
 							td(width="16px")
-								input(type="image" src="img/delete.png")
+								input(dataid=row.id type="image" src="img/delete.png" onclick="del("+row.id+")").delete
 							td(width="16px")
 								input(type="image" src="img/ed.png")

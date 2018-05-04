@@ -35,11 +35,14 @@ app.post("/user", function (req, res) {
 		//console.log(result);
 	});
 });
-//
-// app.get("/", function(request, response){
-//
-// 	response.send("<h1>Главная страница</h1>");
-// });
+
+app.post("/delete", function (req, res) {
+	connection.query('DELETE FROM programs WHERE id="'+req.body.dataid+'"', (err, result)=>{
+		if (err) throw err;
+		//console.log(result);
+		res.json({success: 1});
+	});
+});
 
 
 app.listen(3000, function(){
