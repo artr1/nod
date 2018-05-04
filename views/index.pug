@@ -9,7 +9,7 @@ block main
 				form(action="/user" method="post" name="dataForm").form
 					.form-group
 						label(for="example") Данные
-						input(type="text" name="programName").form-control#example
+						input(type="text" name="programName" required=1).form-control#example
 					button(type="submit").btn.btn-primary Отправить
 			.col-6.offset-3
 				table(width="100%" cellpadding="5")
