@@ -29,17 +29,19 @@ app.get("/", function(req, res){
 });
 
 app.post("/user", function (req, res) {
-	connection.query('INSERT INTO programs (program) VALUES ("'+req.body.programName+'")', (err, result)=>{
-		if (err) throw err;
-		res.json({id: result.insertId, name: req.body.programName});
-		//console.log(result);
-	});
+	if (req.body.programName) {
+		connection.query('INSERT INTO programs (program) VALUES ("'+req.body.programName+'")', (err, result)=>{
+			if (err) throw err;
+			res.json({id: result.insertId, name: req.body.programName});
+			//console.log(result);
+		});
+		}
 });
 
 app.post("/delete", function (req, res) {
 	connection.query('DELETE FROM programs WHERE id="'+req.body.dataid+'"', (err, result)=>{
 		if (err) throw err;
-		//console.log(result);
+		//onsole.log(result);
 		res.json({success: 1});
 	});
 });
