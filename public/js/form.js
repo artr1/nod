@@ -30,7 +30,7 @@ function del(id) {
 
 function edit(id) {
 	console.log(id);
-	$("#row-"+id).replaceWith('<tr id="row-'+id+'"><td><div class="alert-tb alert-primary" data-id="'+id+'"></div></td><td width="16px"><input class="delete" dataid='+id+' type="image" src="img/delete.png" onclick="del('+id+')"></td><td width="16px"><input type="image" src="img/save.png"></td></tr>');
+	$("#row-"+id).replaceWith('<tr id="row-'+id+'"><td><form action="/user" method="post" name="dataForm" class="form"><div class="form-group"><input type="text" name="programName" required="1" id="example" class="form-control" placeholder="'+id+'"/></div></form></td><td width="16px"></td><td width="16px"><input type="image" src="img/save.png"></td></tr>');
 	// $.ajax({
 	// 	type: "POST",
 	// 	url: "/delete",

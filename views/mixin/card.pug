@@ -1,2 +1,2 @@
 mixin card(row)
-	.alert-tb.alert-primary(data-id=row.id) #{row.program}
+	.alert-tb.alert-primary(data-id=row.id onclick="edit("+row.id+")") #{row.program}
