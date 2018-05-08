@@ -53,6 +53,16 @@ app.post("/delete", function (req, res) {
 	});
 });
 
+app.post("/edit", function (req, res) {
+	if (req.body.programNameEdit) {
+		console.log(req.body);
+		connection.query('UPDATE programs SET program=? WHERE id = ?', [req.body.programNameEdit, req.body.id], (err, result, fields)=>{
+			if (err) throw err;
+			res.json({programName: req.body.programNameEdit});
+		});
+		}
+});
+
 
 app.listen(3000, function(){
 	console.log("Сервер запущен...");
