@@ -52,7 +52,7 @@ function edit(row) {
 		var container = $("#formEdit");
 		var save = $("#edit");
 		if (!container.is(e.target) && !save.is(e.target) && container.has(e.target).length === 0) {
-				$("#row-"+row.id).replaceWith('<tr id="row-'+row.id+'"><td><div class="alert-tb alert-primary" data-id="'+row.id+'" onclick="edit('+row.id+')">'+row.program+'</div></td><td width="16px"><input class="delete" dataid='+row.id+' type="image" src="img/delete.png" onclick="del('+row.id+')"></td><td width="16px"><input type="image" src="img/ed.png" onclick="edit("'+row.id+'")"></td></tr>');
+				$("#row-"+row.id).replaceWith('<tr id="row-'+row.id+'"><td><div class="alert-tb alert-primary" data-id="'+row.id+'" onclick="edit('+JSON.stringify(row.program)+')">'+row.program+'</div></td><td width="16px"><input class="delete" dataid='+row.id+' type="image" src="img/delete.png" onclick="del('+row.id+')"></td><td width="16px"><input type="image" src="img/ed.png" onclick="edit("'+row.id+'")"></td></tr>');
 			}
 	});
 

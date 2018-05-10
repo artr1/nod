@@ -15,17 +15,21 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());//если данные пришли в json
 app.use(bodyParser.urlencoded({ extended:true }));//если данные пришли строкой
 
-
 app.get("/", function(req, res){
-	connection.query('SELECT * FROM programs', (err, row, fields)=>{
-		if (err) throw err;
-		const RP = {
-			listener: row
-		}
-		//console.log(RP);
-		res.render("index.pug", RP);
-	});
+		res.render("auth.pug");
 });
+
+
+// app.get("/", function(req, res){
+// 	connection.query('SELECT * FROM programs', (err, row, fields)=>{
+// 		if (err) throw err;
+// 		const RP = {
+// 			listener: row
+// 		}
+// 		//console.log(RP);
+// 		res.render("index.pug", RP);
+// 	});
+// });
 
 // Пример экранирования
 // var post  = {id: 1, title: 'Hello MySQL'};

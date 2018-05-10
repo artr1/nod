@@ -1,0 +1,26 @@
+html
+	head
+		meta(charset="UTF-8")
+		title Тест
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+		link(href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css")
+		link(rel="stylesheet" href="bootstrap/css/bootstrap3.css")
+		link(rel="stylesheet" href="bootstrap/css/theme.css")
+		link(rel="stylesheet" href="bootstrap/css/default.css")
+	body
+	br
+	.col-lg-12
+		.panel
+			.panel-body
+				form.form-inline
+					.form-group
+						label(for="exampleInputUsername2").sr-only Username
+						input(id="exampleInputUsername2" placeholder="Username" type="email").form-control
+					| 
+					.form-group
+						label(for="exampleInputPassword2").sr-only Password
+						input(id="exampleInputPassword2" placeholder="Password" type="password").form-control
+					| 
+					button(type="submit").btn.btn-primary Login
+					| 
+					button(type="reset").btn.btn-default Cancel
